@@ -10,7 +10,7 @@ function ExpenseItem(props) {
 
 
   const clickHandler = () => {
-    setTitle("New Title");
+    setTitle("New Title2");
   };
 
   return (
