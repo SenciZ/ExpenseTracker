@@ -3,7 +3,7 @@ import { useState } from "react";
 import Expenses from "../Expenses/Expenses";
 import "./ExpenseForm.css";
 
-function ExpenseForm() {
+function ExpenseForm(props) {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
@@ -18,7 +18,6 @@ function ExpenseForm() {
     setEnteredDate(e.target.value);
   };
 
-  let allData = [];
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -27,8 +26,7 @@ function ExpenseForm() {
       amount: enteredAmount,
       date: new Date(enteredDate),
     };
-    allData.push(expenseData)
-    console.log(allData)
+    props.onSaveExpenseData(expenseData)
 
     setEnteredTitle("");
     setEnteredAmount("");

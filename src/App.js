@@ -1,7 +1,9 @@
 import Expenses from './components/Expenses/Expenses'
 import NewExpense from './components/NewExpenses/NewExpense';
 
-const App = (props) => {
+const App = () => {
+
+
   const expenses = [
     {
       id: "e1",
@@ -24,12 +26,18 @@ const App = (props) => {
     },
   ];
 
+  const addExpenseHandler = function(expense){
+    console.log("In App Js")
+    console.log(expense);
+    expenses.push(expense)
+    console.log(expenses)
+  }
+
   return (
     <div>
-      <NewExpense />
+      <NewExpense onAddExpense={addExpenseHandler}/>
       <Expenses items={expenses}/>
-      {/* The line above is basically the same as Expenses(items); In which items is the expenses array and is being sent down to the Expenses component using the props(arguments) of the App component function  */}
-
+      {/* The line above is basically the same as Expenses(items); In which items is the expenses array and is being sent down to the Expenses component using the props(arguments) of the Expenses component function  */}
     </div>
   );
 }
