@@ -27,7 +27,8 @@ const App = (props) => {
   return (
     <div>
       <NewExpense />
-      <Expenses data={expenses}/>
+      <Expenses items={expenses}/>
+      {/* The line above is basically the same as Expenses(items); In which items is the expenses array and is being sent down to the Expenses component using the props(arguments) of the App component function  */}
 
     </div>
   );
