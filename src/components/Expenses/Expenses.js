@@ -7,8 +7,7 @@ function Expenses(props) {
   return (
     <div>
     <Card className="expenses">
-    <ExpensesFilter onSubmitYear={onChooseYearFilter}/>
-
+    <ExpensesFilter />
       <ExpenseItem
         title={props.items[0].title}
         amount={props.items[0].amount}
