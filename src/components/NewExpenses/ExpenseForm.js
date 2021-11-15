@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import Expenses from "../Expenses/Expenses";
+// import Expenses from "../Expenses/Expenses";
 import "./ExpenseForm.css";
 
 function ExpenseForm(props) {
@@ -23,7 +23,7 @@ function ExpenseForm(props) {
     e.preventDefault();
     const expenseData = {
       title: enteredTitle,
-      amount: enteredAmount,
+      amount: Number(enteredAmount),
       date: new Date(enteredDate),
     };
     props.onSaveExpenseData(expenseData)
