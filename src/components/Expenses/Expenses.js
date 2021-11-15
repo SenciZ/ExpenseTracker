@@ -4,10 +4,16 @@ import ExpenseItem from "./ExpenseItem";
 import ExpensesFilter from "./ExpensesFilter";
 
 function Expenses(props) {
+
+  const filterChangeHandler = (whatever) => {
+    console.log("Expenses.js")
+    console.log(whatever);
+  }
+
   return (
     <div>
     <Card className="expenses">
-    <ExpensesFilter />
+    <ExpensesFilter onChangeFilter={filterChangeHandler}/>
       <ExpenseItem
         title={props.items[0].title}
         amount={props.items[0].amount}

@@ -5,11 +5,12 @@ import './ExpensesFilter.css';
 
 
 const ExpensesFilter = (props) => {
-    // const[enteredYear, onChooseYearFilter] = useState("");
+    const[enteredYear, setEnteredYear] = useState("");
 
     const onChangeYearHandler = function(e){
-        console.log(e.target.value);
+        props.onChangeFilter(e.target.value);
     };
+
 
   return (
     <div className='expenses-filter'>
