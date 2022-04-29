@@ -33,6 +33,7 @@ function ExpenseForm(props) {
     setEnteredAmount("");
     setEnteredDate("");
     setFocus("focus");
+    setShowForm(false);
   };
 
   const showExpenseForm = (e) => {
