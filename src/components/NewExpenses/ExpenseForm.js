@@ -1,13 +1,14 @@
 import { useState } from "react";
+import "./ExpenseForm.css";
 
 // import Expenses from "../Expenses/Expenses";
-import "./ExpenseForm.css";
 
 function ExpenseForm(props) {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
   const [focus, setFocus] = useState("focus");
+  const [showForm, setShowForm] = useState(false);
 
   const titleChangeHandler = function (e) {
     setEnteredTitle(e.target.value);
@@ -34,44 +35,61 @@ function ExpenseForm(props) {
     setFocus("focus");
   };
 
+  const showExpenseForm = (e) => {
+    if (e.target.textContent === "Add New Expense") {
+      setShowForm(true);
+    } else {
+      setShowForm(false);
+    }
+  };
+
   return (
-    <form onSubmit={submitHandler}>
-      <div className="new-expense__controls">
-        <div className="new-expense__control">
-          <label>Title</label>
-          <input
-            autoFocus={focus}
-            type="text"
-            value={enteredTitle}
-            onChange={titleChangeHandler}
-          />
-        </div>
-        <div className="new-expense__control">
-          <label>Amount</label>
-          <input
-            type="number"
-            min="0.01"
-            step="0.01"
-            value={enteredAmount}
-            onChange={amountChangeHandler}
-          />
-        </div>
-        <div className="new-expense__control">
-          <label>Date</label>
-          <input
-            required
-            type="date"
-            min="2019-01-01"
-            max="2022-12-31"
-            value={enteredDate}
-            onChange={dateChangeHandler}
-          />
-        </div>
-      </div>
-      <div className="new-expense__actions">
-        <button type="submit">Add New Expense</button>
-      </div>
-    </form>
+    <>
+      {showForm === false ? (
+        <button onClick={showExpenseForm}>Add New Expense</button>
+      ) : (
+        <form onSubmit={submitHandler}>
+          <div className="new-expense__controls">
+            <div className="new-expense__control">
+              <label>Title</label>
+              <input
+                autoFocus={focus}
+                type="text"
+                value={enteredTitle}
+                onChange={titleChangeHandler}
+              />
+            </div>
+            <div className="new-expense__control">
+              <label>Amount</label>
+              <input
+                type="number"
+                min="0.01"
+                step="0.01"
+                value={enteredAmount}
+                onChange={amountChangeHandler}
+              />
+            </div>
+            <div className="new-expense__control">
+              <label>Date</label>
+              <input
+                required
+                type="date"
+                min="2019-01-01"
+                max="2022-12-31"
+                value={enteredDate}
+                onChange={dateChangeHandler}
+              />
+            </div>
+          </div>
+          <div className="new-expense__actions">
+            <button type="button" onClick={showExpenseForm}>
+              Cancel
+            </button>
+            <button type="submit">New Expense</button>
+          </div>
+        </form>
+      )}
+    </>
   );
 }
 
